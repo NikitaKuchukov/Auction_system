@@ -1,7 +1,5 @@
 package com.example.easy_auction.mapper;
 
-import com.example.easy_auction.dto.CSVDto;
-import com.example.easy_auction.dto.FullInfoLotDto;
 import com.example.easy_auction.dto.LotDto;
 import com.example.easy_auction.model.Lot;
 import com.example.easy_auction.model.LotStatus;
@@ -36,15 +34,4 @@ public class LotMapper {
         lot.setStatus(LotStatus.CREATED);
         return lot;
     }
-
-    //Исправить! N+1
-//    public CSVDto csvToDto(Lot lot) {
-//        CSVDto csvDto = new CSVDto();
-//        csvDto.setId(lot.getId());
-//        csvDto.setTitle(lot.getTitle());
-//        csvDto.setStatus(lot.getStatus());
-//        csvDto.setCurrentPrice(lot.getBidList().size() * lot.getBidPrice() + lot.getStartPrice());
-//        csvDto.setLastBid(bidRepository.findLastBidder(lot.getId()).orElse(null));
-//        return csvDto;
-//    }
 }

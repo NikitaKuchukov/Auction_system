@@ -15,6 +15,7 @@ public class LotDto {
     private Integer startPrice;
     private Integer bidPrice;
 
+
     public LotDto(int id, String title, LotStatus status, String description, Integer startPrice, Integer bidPrice) {
         this.id = id;
         this.title = title;

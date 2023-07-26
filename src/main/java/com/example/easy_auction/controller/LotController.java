@@ -5,9 +5,15 @@ import com.example.easy_auction.dto.LotDto;
 import com.example.easy_auction.model.Lot;
 import com.example.easy_auction.projection.FullInfoLot;
 import com.example.easy_auction.service.LotService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
@@ -44,9 +50,10 @@ public class LotController {
     }
 
     @GetMapping("export")
-    public void exportLotsToCSV() {
+    public void exportLotsToCSV(HttpServletResponse response) throws IOException {
+        response.addHeader(HttpHeaders.CONTENT_TYPE, "application/csv;charset=windows-1251");
+        response.addHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=LotInfo.csv");
+        lotService.exportLotsToCsv(response.getWriter());
 
     }
-
-
 }

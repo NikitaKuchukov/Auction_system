@@ -1,7 +1,6 @@
 package com.example.easy_auction.projection;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Builder;
 
 import java.time.LocalDateTime;
 

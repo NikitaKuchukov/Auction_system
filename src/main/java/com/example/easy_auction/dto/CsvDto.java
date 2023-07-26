@@ -5,19 +5,19 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class CSVDto {
+public class CsvDto {
 
     private Integer id;
     private String status;
     private String title;
     private Integer currentPrice;
-    private BidderDto lastBid;
+    private String lastBidder;
 
-    public CSVDto(Integer id, String title, String status, BidderDto lastBid, Integer currentPrice) {
+    public CsvDto(Integer id, String title, String status, String lastBid, Integer currentPrice) {
         this.id = id;
         this.status = status;
         this.title = title;
         this.currentPrice = currentPrice;
-        this.lastBid = lastBid;
+        this.lastBidder = lastBid;
     }
 }

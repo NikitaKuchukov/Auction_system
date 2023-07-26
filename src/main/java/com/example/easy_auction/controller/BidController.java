@@ -2,7 +2,6 @@ package com.example.easy_auction.controller;
 
 import com.example.easy_auction.dto.BidderDto;
 import com.example.easy_auction.service.BidService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

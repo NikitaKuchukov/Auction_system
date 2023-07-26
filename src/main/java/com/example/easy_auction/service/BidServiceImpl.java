@@ -30,12 +30,11 @@ public class BidServiceImpl implements BidService {
 
     @Override
     public BidderDto createBid(BidderDto bidderDto, int id) {
-        logger.info("Создание ставки на лот c id = {}", id);
+        logger.info("Вызван метод создания ставки на лот c id = {}", id);
         Lot lot = lotRepository.findById(id).orElseThrow(() -> new LotNotFoundException(id));
         if (lot.getStatus().equals(LotStatus.STARTED)) {
-            Bid bid = new Bid(bidderDto.getBidderName(), bidderDto.getBidDate(), lot);
-//            bidderMapper.toEntity(bidderDto);
-//            bid.setLot(lot);
+            Bid bid = bidderMapper.toEntity(bidderDto);
+            bid.setLot(lot);
             bidRepository.save(bid);
             logger.info("Создана новая ставка на лот с id: {}. Поставил(а): {}", lot.getId(), bidderDto.getBidderName());
             return bidderDto;
@@ -46,16 +45,15 @@ public class BidServiceImpl implements BidService {
     public BidderDto findFirstBidder(int id) {
         logger.info("Вызван метод получения информации о первом ставившем на лот с id = {}", id);
         BidderDto bidderDto = bidRepository.findFirstBidder(id).orElseThrow(() -> new BidNotFoundException(id));
-        logger.info("Получена информация о первом ставившем на лот с id = {}: {} ", id, bidderDto);
+        logger.info("Получено имя ставившего и время первой ставки на лот с id = {}: {} ", id, bidderDto);
         return bidderDto;
     }
 
     @Override
     public BidderDto findFrequentBidder(int id) {
-        logger.info("Вызван метод получения имени ставившего наибольшее количество раз на лот с id = {}", id);
+        logger.info("Вызван метод получения информации о ставившем наибольшее количество раз на лот с id = {}", id);
         BidderDto bidderDto = bidRepository.findFrequentBidder(id).orElseThrow(() -> new LotNotFoundException(id));
-        logger.info("Получено имя ставившего на лот с id = {}: {} ", id, bidderDto);
-//        BidderDto finalBidder = new BidderDto(bidderDto.getBidderName(), bidderDto.getBidDate());
+        logger.info("Получено имя и время последней ставки по лоту с id = {}: {}", id, bidderDto);
         return bidderDto;
     }
 }

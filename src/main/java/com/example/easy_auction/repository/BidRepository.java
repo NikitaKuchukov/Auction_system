@@ -12,13 +12,6 @@ import java.util.Optional;
 @Repository
 public interface BidRepository extends JpaRepository<Bid, Integer> {
 
-      Optional<BidderDto> findTopByIdOrderByBidDateDesc(@Param("id") int id);
-
-//     @Query("""
-//            SELECT new com.example.easy_auction.dto.BidderDto(b.bidderName,b.bidDate)
-//            FROM Bid b WHERE b.lot.id=:id ORDER BY b.bidDate ASC LIMIT 1
-//            """)
-//
         @Query("""
             SELECT new com.example.easy_auction.dto.BidderDto(b.bidderName,b.bidDate)
             FROM Bid b WHERE b.lot.id=:id

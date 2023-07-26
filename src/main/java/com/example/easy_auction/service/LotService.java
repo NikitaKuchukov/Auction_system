@@ -4,6 +4,7 @@ import com.example.easy_auction.dto.FullInfoLotDto;
 import com.example.easy_auction.dto.LotDto;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 public interface LotService {
@@ -16,7 +17,7 @@ public interface LotService {
 
     FullInfoLotDto getFullInfoAboutLot(int id);
 
-    void csvFile() throws IOException;
-
     List<LotDto> getAllLots(int page);
+
+    void exportLotsToCsv(PrintWriter writer);
 }
