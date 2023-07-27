@@ -13,11 +13,4 @@ public class CsvDto {
     private Integer currentPrice;
     private String lastBidder;
 
-    public CsvDto(Integer id, String title, String status, String lastBid, Integer currentPrice) {
-        this.id = id;
-        this.status = status;
-        this.title = title;
-        this.currentPrice = currentPrice;
-        this.lastBidder = lastBid;
-    }
 }
